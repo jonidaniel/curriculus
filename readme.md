@@ -1,13 +1,13 @@
-# Project Title 
-The name of the Project and all authors involved
+# Project Title
+
+Name: Curriculus
+Date: Spring 2025
+Organization: Laurea UAS
+Author: @jonidaniel
 
 ## Demo link:
-Access my site at [google.com](https://google.com)
 
-## How was the workload divided
-How was the workload divided. Who did what? 
-
-
+Access my site at [jonidaniel.github.io/curriculus](https://jonidaniel.github.io/curriculus)
 
 ## Table of Content:
 
@@ -21,34 +21,39 @@ How was the workload divided. Who did what?
 - [License](#license)
 
 ## About The App
-[Name of project] is an app that ...
+
+[Curriculus] is made for Laurea UAS BIT students. With [Curriculus], BIT students can easily track, save, and view their time spendage on studying. User inputs the amount of time they spent studying, and then chooses the course they spent it on – courses are chosen from a comprehensive list of Laurea UAS Business Information Technologies curriculum courses!
+
+Users can list, sort ...
 
 ## Screenshots
-Add here atleast one screenshot of the working application 
+
 `![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
 
 Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
 
 ## Technologies
-Describe which technologies were used and the role of each in your project. 
-I used the following technologies `html`, `css`, ...
+
+Describe which technologies were used and the role of each in your project.
+I used `HTML`, `CSS` and `JavaScript` for this application.
 
 ## Setup
-Write brief instructions on how to run and use your app. For example:
-- download all the files and open index.html in your browser
-- download or clone the repository
-- run `npm install`
-- ...
+
+- Clone repo with `git clone https://github.com/jonidaniel/curriculus`
+- Open `curriculus/index.html` in your browser (preferably Google Chrome)
 
 ## Status
-[name of project] is still in progress. `Version 2` will be out soon.
+
+[Curriculus] is still in progress.
 
 ## Credits
-List of contriubutors and sources you used during the project. Also mention if you used ChatGPT or other AI tools when coding and explain how did you benefit from them.
-- [John Doe](johndoe.com)
-- [Beginners guide to BEM](link-goes-here.com)
+
+List of contributors and sources you used during the project. Also mention if you used ChatGPT or other AI tools when coding and explain how did you benefit from them.
+
+- [Laurea](laurea.fi)
 
 ## License
+
 Choose a license for your project by following this [guide](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository).
 
-Example: MIT license @ [author](author.com)
+MIT license @ [jonidaniel](jonidaniel.github.io)
