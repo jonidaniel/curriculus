@@ -1,17 +1,17 @@
-# Project Title
+# Curriculus
 
-Name: Curriculus
-Date: Spring 2025
-Organization: Laurea UAS
+Date: Spring 2025\
+Organization: Laurea UAS\
 Author: @jonidaniel
 
-## Demo link:
+## Video Demo:
 
-Access my site at [jonidaniel.github.io/curriculus](https://jonidaniel.github.io/curriculus)
+Access my site at:\
+[jonidaniel.github.io/curriculus](https://jonidaniel.github.io/curriculus)
 
 ## Table of Content:
 
-- [About The App](#about-the-app)
+- [About Curriculus](#about-curriculus)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
@@ -20,7 +20,7 @@ Access my site at [jonidaniel.github.io/curriculus](https://jonidaniel.github.io
 - [Credits](#credits)
 - [License](#license)
 
-## About The App
+## About Curriculus
 
 [Curriculus] is made for Laurea UAS BIT students. With [Curriculus], BIT students can easily track, save, and view their time spendage on studying. User inputs the amount of time they spent studying, and then chooses the course they spent it on – courses are chosen from a comprehensive list of Laurea UAS Business Information Technologies curriculum courses!
 
@@ -28,14 +28,15 @@ Users can list, sort ...
 
 ## Screenshots
 
-`![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
-
-Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
+asd
 
 ## Technologies
 
-Describe which technologies were used and the role of each in your project.
-I used `HTML`, `CSS` and `JavaScript` for this application.
+I'm developing this application with:
+
+- `HTML`
+- `CSS`
+- `JavaScript`
 
 ## Setup
 
@@ -48,9 +49,7 @@ I used `HTML`, `CSS` and `JavaScript` for this application.
 
 ## Credits
 
-List of contributors and sources you used during the project. Also mention if you used ChatGPT or other AI tools when coding and explain how did you benefit from them.
-
-- [Laurea](laurea.fi)
+- [Laurea](laurea.fi) Curriculus is made in co-operation with Laurea UAS.
 
 ## License
 
