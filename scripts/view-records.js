@@ -13,5 +13,5 @@ function viewRecords() {
   records.querySelector("tbody").querySelectorAll("tr")[2].innerText = "c";
 
   // 3. Insert table to content div
-  content.appendChild(records);
+  content.append(records);
 }
