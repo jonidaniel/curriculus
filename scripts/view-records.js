@@ -1,66 +1,68 @@
-// Functions for viewing study records
-// This script generates the view records page
+// View Records Script
+// Generates View Records page
 
-// import { format } from "../node_modules/date-fns/index.js";
-// import { format } from "date-fns";
-
-function viewRecords(instructionText, inputField, submitButton) {
-  // Erase make an entry and view records buttons from the page
-  entryButton.remove();
-  viewButton.remove();
-
-  // Erase instruction text, input field and submit button from the page (if exists)
-  // Note: Conditional checking is necessary because the app user can end up here on view records page
-  // either from index page or make entry page
-  //
-  // App flow:
-  //      index ---> make entry ---
-  //        |                      |
-  //        |                      |
-  //         ---> view records <---
-  //
-  if (instructionText) instructionText.remove();
-  if (inputField) inputField.remove();
-  if (submitButton) submitButton.remove();
-
-  // Fetch all items from Local Storage
-  // First, declare an empty array
+// Gets Curriculus records from Local Storage,
+// and shows them on the page in a sorted table
+function viewRecords() {
   const records = [];
-  // Then, go through all items
+
+  // Iterate through Local Storage
   for (item in localStorage) {
-    // If an item starts with string "curriculus", append it to records array
+    // If an item starts with a string "curriculus", then append it to records array
     if (item.startsWith("curriculus")) {
-      // Remove prefix from record
-      let modifiedRecord = item.slice(10);
-      // Push record to records array without prefix
+      // Remove prefix (string curriculus plus 13 digit id) from record
+      let withoutPrefix = item.slice(23);
       records.push({
-        value: modifiedRecord,
         date: JSON.parse(localStorage.getItem(item)).date,
+        data: withoutPrefix,
       });
     }
   }
 
-  // Create a record table to be shown on page
-  // Use records array length to determine the size of recordTable
+  records.sort((a, b) => {
+    if (a.date > b.date) {
+      return -1;
+    }
+    if (a.date < b.date) {
+      return 1;
+    }
+    // return 0;
+  });
+
+  // Create a 2-column record table to be shown on page
+  // Table cells contain recorded entry dates and hours
+  // Use records array length to determine size
   const recordTable = document.createElement("table");
   recordTable.id = "table";
-  for (let i = 0; i < records.length - 1; i++) {
-    recordTable.insertRow().style.border = "2px solid black";
-    // Format current record's date
-    const date = dateFns.format(records[i].date, "MMMM DD, YYYY HH:MM");
-    // Get the newly created row and set current record's date as its innerText
-    recordTable.querySelector("tbody").querySelectorAll("tr")[i].innerText =
-      date;
-    // Get the newly created row and add it a cell
-    let cell = recordTable
-      .querySelector("tbody")
-      .querySelectorAll("tr")
-      [i].insertCell();
-    cell.style.border = "2px solid black";
-    // Set current record's value as the cell's innerText
-    cell.innerText = records[i].value;
+
+  // Create the table header row
+  const row = recordTable.insertRow();
+  const leftColumnHeader = row.insertCell();
+  const rightColumnHeader = row.insertCell();
+
+  // Set table headers
+  leftColumnHeader.className = "cell";
+  leftColumnHeader.innerText = "Date";
+  rightColumnHeader.className = "cell";
+  rightColumnHeader.innerText = "Study amount";
+
+  // Create rest of the table one row at a time from top to bottom
+  // Left cell, right cell, left cell, right cell...
+  for (let i = 0; i < records.length; i++) {
+    // Create row
+    const row = recordTable.insertRow();
+    const leftCell = row.insertCell();
+    const rightCell = row.insertCell();
+
+    // Set dates in the left table column
+    leftCell.className = "cell";
+    leftCell.innerText = records[i].date;
+
+    // Set study amounts in the right table column
+    rightCell.className = "cell";
+    rightCell.innerText = records[i].data + " hours";
   }
-  // Insert recordTable to content div
+  // Insert recordTable to content parent div
   content.append(recordTable);
 }
 

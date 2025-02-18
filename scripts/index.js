@@ -1,61 +1,63 @@
-// Index Script
-// Application start function
+// Scripts Index
 
-// This script generates the application index page,
-// also handles button click directing to make entry page or view records page
+// Generates application Index page,
+// also handles button clicks directing to Make Entry page or View Records page
 
-// function main() {
-// Define root element
-// All parent divs on the webpage body (header, content, footer) are nested under root element
-// and all children (buttons, input fields, texts, etc.) are nested under the main divs
+// All parent divs on webpage body (header, content, footer) are nested under root element
+// and all children (buttons, input fields, texts, etc.) are nested under the parent divs
+
+// Define the root constant
 const root = document.querySelector("#root");
 
-// Create header parent div
+// Create the parent divs
 const header = document.createElement("div");
-header.innerText = "Curriculus";
-header.style.height = "200px";
-
-// Create content parent div
 const content = document.createElement("div");
-content.style.height = "400px";
-
-// Create footer parent div
 const footer = document.createElement("div");
-footer.innerText = "ⓒ 2025 Joni Mäkinen";
-
-// Insert parent divs to root
-root.append(header);
-root.append(content);
-root.append(footer);
-
-// Create make an entry button
+// Create make an entry and view records buttons
 const entryButton = document.createElement("button");
-entryButton.innerText = "Make an entry";
-entryButton.addEventListener("click", function (event) {
-  event.id = "entry";
-  handleClick(event);
-});
-
-// Create view records button
 const viewButton = document.createElement("button");
-viewButton.innerText = "View records";
-viewButton.addEventListener("click", function (event) {
-  handleClick(event);
-});
 
-// Insert buttons to content parent div
-content.append(entryButton);
-content.append(viewButton);
-// }
+function main() {
+  // Assign ids to the parent divs
+  header.id = "header";
+  content.id = "content";
+  footer.id = "footer";
+
+  // Set the header and footer texts
+  header.innerText = "Curriculus";
+  footer.innerText = "ⓒ 2025 Joni Mäkinen";
+
+  // Set the buttons
+  entryButton.innerText = "Make an entry";
+  entryButton.addEventListener("click", (event) => {
+    event.id = "entry";
+    handleClick(event);
+  });
+  viewButton.innerText = "View records";
+  viewButton.addEventListener("click", (event) => {
+    handleClick(event);
+  });
+
+  // Insert the buttons to the content parent div
+  content.append(entryButton);
+  content.append(viewButton);
+
+  // Insert the parent divs to the root
+  root.append(header);
+  root.append(content);
+  root.append(footer);
+}
 
 function handleClick(e) {
-  // Decide whether to go make an entry or view records
+  entryButton.remove();
+  viewButton.remove();
+
+  // Go to the Make Entry page or the View Records page
   if (e.id === "entry") {
     makeEntry();
   } else {
-    // exports.viewRecords();
     viewRecords();
   }
 }
 
-// main();
+main();
