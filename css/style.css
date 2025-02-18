@@ -5,3 +5,12 @@
 #table {
   border-collapse: collapse;
 }
+
+/* External font */
+/* @font-face {
+  font-family: "Prospectus";
+  src: url(fonts/ProspectusSTDDEMO-Black.otf) format("truetype");
+}
+h1 {
+  font-family: "Prospectus", sans-serif;
+} */

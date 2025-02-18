@@ -1,3 +1,7 @@
+// Functions for making an entry
+// This script generates the make entry page,
+// also handles submit button click directing to view records page
+
 function makeEntry() {
   // Erase entry and view records buttons from the page
   entryButton.remove();
@@ -34,6 +38,7 @@ function handleSubmit(instructionText, inputField, submitButton) {
   const validated = validateInput(inputField);
   if (validated) {
     saveInput(inputField);
+    // exports.viewRecords(instructionText, inputField, submitButton);
     viewRecords(instructionText, inputField, submitButton);
   } else {
   }

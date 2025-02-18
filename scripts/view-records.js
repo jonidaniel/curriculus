@@ -1,9 +1,24 @@
+// Functions for viewing study records
+// This script generates the view records page
+
+// import { format } from "../node_modules/date-fns/index.js";
+// import { format } from "date-fns";
+
 function viewRecords(instructionText, inputField, submitButton) {
-  // Erase entry and view records buttons from the page
+  // Erase make an entry and view records buttons from the page
   entryButton.remove();
   viewButton.remove();
 
   // Erase instruction text, input field and submit button from the page (if exists)
+  // Note: Conditional checking is necessary because the app user can end up here on view records page
+  // either from index page or make entry page
+  //
+  // App flow:
+  //      index ---> make entry ---
+  //        |                      |
+  //        |                      |
+  //         ---> view records <---
+  //
   if (instructionText) instructionText.remove();
   if (inputField) inputField.remove();
   if (submitButton) submitButton.remove();
@@ -31,9 +46,11 @@ function viewRecords(instructionText, inputField, submitButton) {
   recordTable.id = "table";
   for (let i = 0; i < records.length - 1; i++) {
     recordTable.insertRow().style.border = "2px solid black";
+    // Format current record's date
+    const date = dateFns.format(records[i].date, "MMMM DD, YYYY HH:MM");
     // Get the newly created row and set current record's date as its innerText
     recordTable.querySelector("tbody").querySelectorAll("tr")[i].innerText =
-      records[i].date;
+      date;
     // Get the newly created row and add it a cell
     let cell = recordTable
       .querySelector("tbody")
@@ -94,7 +111,7 @@ function viewRecords(instructionText, inputField, submitButton) {
       - Olio-ohjelmointi
       - Building and Deploying Cross Platform Mobile Apps
       - Web Content Management Systems
-      - C#-ohjelmointi
+      - C# -ohjelmointi
       - Python-ohjelmointi
       - PHP-ohjelmointi
       - C-ohjelmointi
@@ -114,4 +131,71 @@ function viewRecords(instructionText, inputField, submitButton) {
       - DevOps Fundamentals
       - AWS-pilven perusteet
   - Muu täydentävä osaaminen
+
+- Core Competence
+  - Competence in Business and Entrepreneurship
+    - Understanding Business and the Business Environment
+    - Introduction to Marketing
+    - Management and Leadership
+    - Swedish for Bachelors of Business Administration
+    - Initial Test in Swedish Skills
+  - Competence in ICT
+    - The ICT Environment and Infrastructure
+    - Fundamentals of Programming
+    - Foundations of Web Development
+    - Information Management and Databases
+    - Data Networks and Information Security
+    - Professional Communication in English
+    - Initial Test in English Skills
+  - Sustainability and Business Analysis
+    - Service Design
+    - Corporate Social Responsibility
+    - Digital Marketing and Sales
+    - Data-driven Decision Making
+  - Expert in a Work Community
+    - Placement 1
+    - Placement 2
+  - Expert in Development and Workplace Innovation
+    - Project Management and Communication
+    - Methods for Research-based Development Work
+    - Thesis
+    - From a Student to a Professional
+      - Study Skills and Professional Orientation
+      - Professional Development
+      - Starting a Successful Career
+- Complementary Competence
+  - Complementary Competence Studies Related to the Field of Study
+    - Design of Applications and Digital Services
+      - User-centered Design of Digital Services
+      - Modelling a Digital Service
+      - Defining and Designing a Software Product
+      - Introduction to Mobile App Design and Development
+    - Application Development
+      - Dynamic Web Applications with Javascript
+      - Full Stack Development
+      - Application Development Project
+      - Developing and Maintaining Integrations and API's
+      - Object-oriented Programming
+      - Building and Deploying Cross Platform Mobile Apps
+      - Web Content Management Systems
+      - Programming with C#
+      - Programming with Python
+      - Programming with PHP
+      - Programming with C
+      - Basics of Programming with C++
+      - Programming with Ruby
+    - Testing and Quality Assurance
+      - Fundamentals of Software Testing
+      - Functional Testing of Software
+      - Usability Testing and Evaluation
+      - Robotic Process Automation
+    - Other Complementary ICT Competence
+      - Introduction to Information Security
+      - Introduction to Linux Operating System
+      - Audiovisual Production
+      - Planning nad Implementation of Media Elements
+      - Fundamentals of Subscription Economy
+      - DevOps Fundaments
+      - AWS Cloud Fundamentals
+  - Other Complementary Competence
 */
