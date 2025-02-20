@@ -1,69 +1,88 @@
-// View Records Script
-// Generates View Records page
+// Record Table functions
 
-// Gets Curriculus records from Local Storage,
+// Generates a record table to the Entry/View page
+
+// Gets Curriculus records from Local Storage
 // and shows them on the page in a sorted table
-function viewRecords() {
-  const records = [];
+function recordTable(overwrite, entry) {
+  let records = [];
+  getRecords();
+  createTable(overwrite, entry);
 
-  // Iterate through Local Storage
-  for (item in localStorage) {
-    // If an item starts with a string "curriculus", then append it to records array
-    if (item.startsWith("curriculus")) {
-      // Remove prefix (string curriculus plus 13 digit id) from record
-      let withoutPrefix = item.slice(23);
-      records.push({
-        date: JSON.parse(localStorage.getItem(item)).date,
-        data: withoutPrefix,
-      });
+  // Gets and sorts Curriculus records from Local Storage into an array
+  function getRecords() {
+    // Iterate through Local Storage
+    for (item in localStorage) {
+      // If an item starts with a string "curriculus", then append it to records array
+      if (item.startsWith("curriculus")) {
+        let json = localStorage.getItem(item);
+        let entryObj = JSON.parse(json);
+
+        records.push({
+          date: JSON.parse(localStorage.getItem(item)).date,
+          data: entryObj.data.hours,
+        });
+      }
     }
+    // Sort records
+    records.sort((a, b) => {
+      if (a.date > b.date) {
+        return -1;
+      }
+      if (a.date < b.date) {
+        return 1;
+      }
+      return 0;
+    });
+    // console.log(records);
   }
 
-  records.sort((a, b) => {
-    if (a.date > b.date) {
-      return -1;
+  // Creates a 2-column record table to be shown on page
+  // Table cells contain recorded entry date and study amount data
+  // We use will records array length from previous function to determine table size
+  function createTable(overwrite, entry) {
+    // Remove if there's an old table
+    if (overwrite) {
+      table.remove();
     }
-    if (a.date < b.date) {
-      return 1;
+
+    table = document.createElement("table");
+    table.id = "table";
+
+    // Create the table header row
+    const row = table.insertRow();
+    const leftColumnHeader = row.insertCell();
+    const rightColumnHeader = row.insertCell();
+
+    // Set table headers
+    leftColumnHeader.className = "cell";
+    leftColumnHeader.innerText = "Date";
+    rightColumnHeader.className = "cell";
+    rightColumnHeader.innerText = "Study amount";
+
+    // Create rest of the table one row at a time from top to bottom
+    // Left cell, right cell, left cell, right cell...
+    for (let i = 0; i < records.length; i++) {
+      // Create row
+      const row = table.insertRow();
+      const leftCell = row.insertCell();
+      const rightCell = row.insertCell();
+
+      // Set dates in the left table column
+      leftCell.className = "cell";
+      leftCell.innerText = records[i].date;
+
+      // Set study amounts in the right table column
+      rightCell.className = "cell";
+      rightCell.innerText = records[i].data + " hours";
     }
-    // return 0;
-  });
-
-  // Create a 2-column record table to be shown on page
-  // Table cells contain recorded entry dates and hours
-  // Use records array length to determine size
-  const recordTable = document.createElement("table");
-  recordTable.id = "table";
-
-  // Create the table header row
-  const row = recordTable.insertRow();
-  const leftColumnHeader = row.insertCell();
-  const rightColumnHeader = row.insertCell();
-
-  // Set table headers
-  leftColumnHeader.className = "cell";
-  leftColumnHeader.innerText = "Date";
-  rightColumnHeader.className = "cell";
-  rightColumnHeader.innerText = "Study amount";
-
-  // Create rest of the table one row at a time from top to bottom
-  // Left cell, right cell, left cell, right cell...
-  for (let i = 0; i < records.length; i++) {
-    // Create row
-    const row = recordTable.insertRow();
-    const leftCell = row.insertCell();
-    const rightCell = row.insertCell();
-
-    // Set dates in the left table column
-    leftCell.className = "cell";
-    leftCell.innerText = records[i].date;
-
-    // Set study amounts in the right table column
-    rightCell.className = "cell";
-    rightCell.innerText = records[i].data + " hours";
+    // Insert table to content parent div
+    if (content.hasChildNodes()) {
+      content.append(table);
+    } else {
+      content.insertBefore(table, content.firstChild);
+    }
   }
-  // Insert recordTable to content parent div
-  content.append(recordTable);
 }
 
 /*
