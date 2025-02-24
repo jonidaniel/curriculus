@@ -4,84 +4,79 @@
 
 // Gets Curriculus records from Local Storage
 // and shows them on the page in a sorted table
-function recordTable(overwrite, entry) {
-  let records = [];
-  getRecords();
-  createTable(overwrite, entry);
-
-  // Gets and sorts Curriculus records from Local Storage into an array
-  function getRecords() {
-    // Iterate through Local Storage
-    for (item in localStorage) {
-      // If an item starts with a string "curriculus", then append it to records array
-      if (item.startsWith("curriculus")) {
-        let json = localStorage.getItem(item);
-        let entryObj = JSON.parse(json);
-
-        records.push({
-          date: JSON.parse(localStorage.getItem(item)).date,
-          data: entryObj.data.hours,
-        });
-      }
-    }
-    // Sort records
-    records.sort((a, b) => {
-      if (a.date > b.date) {
-        return -1;
-      }
-      if (a.date < b.date) {
-        return 1;
-      }
-      return 0;
-    });
-    // console.log(records);
-  }
+function recordTable() {
+  createTable();
 
   // Creates a 2-column record table to be shown on page
   // Table cells contain recorded entry date and study amount data
-  // We use will records array length from previous function to determine table size
-  function createTable(overwrite, entry) {
-    // Remove if there's an old table
-    if (overwrite) {
-      table.remove();
+  function createTable() {
+    // Get previous records and parse them
+    let parsed = JSON.parse(localStorage.getItem("curriculus"));
+
+    // Sort parsed
+    function compareFn(a, b) {
+      if (a.datetime > b.datetime) {
+        return -1;
+      } else if (a.datetime < b.datetime) {
+        return 1;
+      }
+      return 0;
     }
+
+    if (parsed != null) parsed.sort(compareFn);
+
+    if (document.querySelector("table")) table.remove();
 
     table = document.createElement("table");
     table.id = "table";
 
     // Create the table header row
     const row = table.insertRow();
-    const leftColumnHeader = row.insertCell();
-    const rightColumnHeader = row.insertCell();
+    const firstColumnHeader = row.insertCell();
+    const secondColumnHeader = row.insertCell();
+    const thirdColumnHeader = row.insertCell();
+    const fourthColumnHeader = row.insertCell();
 
     // Set table headers
-    leftColumnHeader.className = "cell";
-    leftColumnHeader.innerText = "Date";
-    rightColumnHeader.className = "cell";
-    rightColumnHeader.innerText = "Study amount";
+    firstColumnHeader.className = "cell";
+    firstColumnHeader.innerText = "Date & Time";
+    secondColumnHeader.className = "cell";
+    secondColumnHeader.innerText = "Course";
+    thirdColumnHeader.className = "cell";
+    thirdColumnHeader.innerText = "Study Amount";
+    fourthColumnHeader.className = "cell";
+    fourthColumnHeader.innerText = "Notes";
 
     // Create rest of the table one row at a time from top to bottom
     // Left cell, right cell, left cell, right cell...
-    for (let i = 0; i < records.length; i++) {
-      // Create row
-      const row = table.insertRow();
-      const leftCell = row.insertCell();
-      const rightCell = row.insertCell();
+    if (parsed != null) {
+      for (let i = 0; i < parsed.length; i++) {
+        // Create row
+        const row = table.insertRow();
+        const firstCell = row.insertCell();
+        const secondCell = row.insertCell();
+        const thirdCell = row.insertCell();
+        const fourthCell = row.insertCell();
 
-      // Set dates in the left table column
-      leftCell.className = "cell";
-      leftCell.innerText = records[i].date;
+        // Set dates in the first table column
+        firstCell.className = "cell";
+        firstCell.innerText = parsed[i].datetime;
 
-      // Set study amounts in the right table column
-      rightCell.className = "cell";
-      rightCell.innerText = records[i].data + " hours";
+        // Set course in the second table column
+        secondCell.className = "cell";
+        secondCell.innerText = parsed[i].course;
+
+        // Set study amounts in the third table column
+        thirdCell.className = "cell";
+        thirdCell.innerText = parsed[i].noCommas + " hours";
+
+        // Set notes in the fourth table column
+        fourthCell.className = "cell";
+        fourthCell.innerText = parsed[i].notes;
+      }
     }
     // Insert table to content parent div
-    if (content.hasChildNodes()) {
-      content.append(table);
-    } else {
-      content.insertBefore(table, content.firstChild);
-    }
+    content.append(table);
   }
 }
 

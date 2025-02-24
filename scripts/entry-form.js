@@ -13,86 +13,92 @@ const submitButton = document.createElement("button");
 
 // Creates an entry form and shows it on the page
 function entryForm() {
-  // Go make a record table
-  recordTable();
+  // Create entry form now (upper part of webpage)
   createForm();
+  // Then, go make a record table (lower part of webpage)
+  recordTable();
 
   // Creates the entry form
   function createForm() {
     // Set the hours text
-    hoursText.innerText =
-      "How many hours did you study?\n(use dots in decimals)";
+    hoursText.innerText = "How many hours did you study?";
 
     // Set the hours input field
-    hoursInput.value = "Hours";
+    hoursInput.value = "e.g. 2.5";
+    hoursInput.style.color = "grey";
     hoursInput.addEventListener("focus", () => {
       hoursInput.value = null;
+      hoursInput.style.color = "black";
+      document.querySelectorAll("input")[0].style.border = null;
     });
 
     // Set the courses text
     coursesText.innerText = "On what course?";
 
     // Set the courses input field
-    coursesInput.value = "Courses";
+    coursesInput.value = "e.g. Web-sovellusten kehittäminen Javascrip...";
+    coursesInput.style.color = "grey";
     coursesInput.addEventListener("focus", () => {
       coursesInput.value = null;
+      coursesInput.style.color = "black";
+      document.querySelectorAll("input")[1].style.border = null;
     });
 
     // Set the notes text
     notesText.innerText = "Add notes?";
 
     // Set the notes input field
-    notesInput.value = "Notes";
+    notesInput.value = "e.g. Developing the User Interface with...";
+    notesInput.style.color = "grey";
     notesInput.addEventListener("focus", () => {
       notesInput.value = null;
+      notesInput.style.color = "black";
     });
 
     // Set the submit button
     submitButton.id = "submit";
     submitButton.innerText = "Submit";
-    submitButton.innerHTML += "<br />";
     submitButton.addEventListener("click", () => {
       handleSubmit(hoursInput.value, coursesInput.value, notesInput.value);
     });
 
     // Insert components to content parent div
-    // If content has no children,
-    // append components to the end of content
-    if (!content.hasChildNodes()) {
-      content.append(hoursText);
-      content.append(hoursInput);
-      content.append(coursesText);
-      content.append(coursesInput);
-      content.append(notesText);
-      content.append(notesInput);
-      content.append(submitButton);
-      // If content has children,
-      // insert components before the first child
-    } else {
-      content.insertBefore(submitButton, content.firstChild);
-      content.insertBefore(notesInput, content.firstChild);
-      content.insertBefore(notesText, content.firstChild);
-      content.insertBefore(coursesInput, content.firstChild);
-      content.insertBefore(coursesText, content.firstChild);
-      content.insertBefore(hoursInput, content.firstChild);
-      content.insertBefore(hoursText, content.firstChild);
-    }
+    content.append(hoursText);
+    content.append(hoursInput);
+    content.append(coursesText);
+    content.append(coursesInput);
+    content.append(notesText);
+    content.append(notesInput);
+    content.append(submitButton);
   }
 }
 
 // Handles submit button clicks
-function handleSubmit(hours, courses, notes) {
+function handleSubmit(hours, course, notes) {
+  // Replace commas with dots
+  let noCommas = hours.replace(",", ".");
   // Validate hours input and courses input in respective functions
   // No need to validate notes input
-  const hoursValidated = validateHours(hours);
-  const coursesValidated = validateCourses(courses);
+  const hoursValidated = validateHours(noCommas);
+  const coursesValidated = validateCourses(course);
   if (hoursValidated && coursesValidated) {
-    let entry = saveEntry({ hours, courses, notes });
+    // Date and time of submit are saved
+    const datetime = dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss");
+
+    function idGenerator() {
+      let id = "";
+      let possible = "abcdefghijklmnopqrstuvwxyz";
+      for (let i = 0; i < 8; i++)
+        id += possible.charAt(Math.floor(Math.random() * possible.length));
+      return id;
+    }
+
+    // Each record is assigned a unique id
+    const id = idGenerator();
+
+    saveEntry({ id, datetime, noCommas, course, notes });
     // Go update the record table
-    // I.e. remove it and make a new one
-    // Boolean type argument tells recordTable()
-    // that there's already a table on the page and that it needs to be updated
-    recordTable(true, entry);
+    recordTable();
   }
 }
 
@@ -102,7 +108,6 @@ function validateHours(value) {
   if (!isNaN(value) && value !== "") {
     return true;
   } else {
-    // !!!!!!! tekee kun painaa ulos
     document.querySelectorAll("input")[0].style.border = "2px solid red";
     return false;
   }
@@ -120,22 +125,26 @@ function validateCourses(value) {
 }
 
 // Saves entries to Local Storage
+// All records are encapsulated under the same Local Storage key, curriculus
+// Key records contains an array that contains all Curriculus records as objects
 function saveEntry(entry) {
-  // Add prefix to entry
-  // Needed when fetching everything from and iterating through Local Storage
-  // Prefix identifies a Local Storage item as a Curriculus record
-  let id = Math.random().toString(16).slice(2);
-  const entryKey = "curriculus" + id;
-  // Form an entry data object
-  const entryData = {
-    date: dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss"),
-    data: entry,
-  };
-  // Save entry to Local Storage as a key-value pair
-  // JSON.stringify() turns entryData into a JSON string
-  // Note: Use JSON.parse() when getting items later
-  localStorage.setItem(entryKey, JSON.stringify(entryData));
-  // localStorage.clear();
+  // Erase default course and notes
+  if (entry.course == "e.g. Web-sovellusten kehittäminen Javascrip...")
+    entry.course = "";
+  if (entry.notes == "e.g. Developing the User Interface with...")
+    entry.notes = "";
 
-  return entry;
+  // Get previous entries
+  let records = localStorage.getItem("curriculus");
+  // If there's no previous entries
+  if (records == null) {
+    let json = JSON.stringify([entry]);
+    localStorage.setItem("curriculus", json);
+    // If there's previous entries
+  } else {
+    let parsed = JSON.parse(records);
+    parsed.push(entry);
+    let json = JSON.stringify(parsed);
+    localStorage.setItem("curriculus", json);
+  }
 }
