@@ -11,6 +11,12 @@ const notesText = document.createElement("p");
 const notesInput = document.createElement("input");
 const submitButton = document.createElement("button");
 
+// Create search-related stuff
+const searchContainer = document.createElement("div");
+const inSearchContainer = document.createElement("div");
+const boxDropdown = document.createElement("div");
+const dropdownSrc = document.createElement("ul");
+
 // Creates an entry form and shows it on the page
 function entryForm() {
   // Create entry form now (upper part of webpage)
@@ -22,7 +28,6 @@ function entryForm() {
   function createForm() {
     // Set the hours text
     hoursText.innerText = "How many hours did you study?";
-
     // Set the hours input field
     hoursInput.value = "e.g. 2.5";
     hoursInput.style.color = "grey";
@@ -34,19 +39,29 @@ function entryForm() {
 
     // Set the courses text
     coursesText.innerText = "On what course?";
-
     // Set the courses input field
-    coursesInput.value = "e.g. Web-sovellusten kehittäminen Javascrip...";
+    coursesInput.type = "text";
+    coursesInput.id = "inp-src";
+    coursesInput.value = "Search...";
     coursesInput.style.color = "grey";
+    coursesInput.addEventListener("keyup", searches);
     coursesInput.addEventListener("focus", () => {
       coursesInput.value = null;
       coursesInput.style.color = "black";
-      document.querySelectorAll("input")[1].style.border = null;
     });
+    // Set search-related stuff
+    searchContainer.className = "search-container";
+    inSearchContainer.id = "in-search-container";
+    boxDropdown.id = "box-dropdown";
+    boxDropdown.addEventListener("click", (ex) => {
+      let doc = document.getElementById("inp-src");
+      doc.value = ex.target.innerText;
+      boxDropdown.innerHTML = "";
+    });
+    dropdownSrc.id = "dropdown-src";
 
     // Set the notes text
     notesText.innerText = "Add notes?";
-
     // Set the notes input field
     notesInput.value = "e.g. Developing the User Interface with...";
     notesInput.style.color = "grey";
@@ -62,11 +77,17 @@ function entryForm() {
       handleSubmit(hoursInput.value, coursesInput.value, notesInput.value);
     });
 
+    // Build search container
+    inSearchContainer.appendChild(coursesInput);
+    boxDropdown.appendChild(dropdownSrc);
+    searchContainer.appendChild(inSearchContainer);
+    searchContainer.appendChild(boxDropdown);
+
     // Insert components to content parent div
     content.append(hoursText);
     content.append(hoursInput);
     content.append(coursesText);
-    content.append(coursesInput);
+    content.append(searchContainer);
     content.append(notesText);
     content.append(notesInput);
     content.append(submitButton);
