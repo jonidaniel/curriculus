@@ -6,7 +6,7 @@ Author: Joni Mäkinen @jonidaniel
 
 ## Video Demo:
 
-Access the video demonstration at:\
+Access the video demonstration here:\
 [Curriculus](https://youtu.be/UQANnl9McAE)
 
 ## Table of Content:
@@ -15,7 +15,6 @@ Access the video demonstration at:\
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Approach](#approach)
 - [Status](#status)
 - [Credits](#credits)
 - [License](#license)
@@ -47,7 +46,8 @@ I've developed this application with:
 
 ## Credits
 
-- Curriculus was developed in co-operation with Laurea UAS.\[Laurea](laurea.fi)
+- Curriculus was developed in co-operation with Laurea UAS.
+  [Laurea](laurea.fi)
 
 ## License
 
