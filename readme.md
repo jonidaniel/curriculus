@@ -6,8 +6,7 @@ Author: Joni Mäkinen @jonidaniel
 
 ## Video Demo:
 
-Access the video demonstration here:\
-[Curriculus](https://youtu.be/UQANnl9McAE)
+Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 
 ## Table of Content:
 
@@ -42,11 +41,11 @@ I've developed this application with:
 
 ## Status
 
-- Curriculus version 1.0.0 is now completed and published on Netlify.
+- Curriculus version 1.0.0 is now completed and published on Netlify
 
 ## Credits
 
-- Curriculus was developed in co-operation with [Laurea UAS](https://www.laurea.fi).
+- Curriculus was developed in co-operation with [Laurea UAS](https://www.laurea.fi)
 
 ## License
 
