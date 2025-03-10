@@ -41,7 +41,7 @@ I've developed this application with:
 
 ## Status
 
-- Curriculus version 1.0.0 is now completed and published on Netlify
+- Curriculus version 1.0.0 is now published and operational on Netlify
 
 ## Credits
 
