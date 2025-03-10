@@ -2,7 +2,7 @@
 
 Date: Spring 2025\
 Organization: Laurea UAS\
-Author: Joni Mäkinen @jonidaniel
+Author: Joni Mäkinen [@jonidaniel](https://github.com/jonidaniel)
 
 ## Video Demo:
 
