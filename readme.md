@@ -6,8 +6,8 @@ Author: Joni Mäkinen @jonidaniel
 
 ## Video Demo:
 
-Access my site at:\
-[jonidaniel.github.io/curriculus](https://jonidaniel.github.io/curriculus)
+Access the video demonstration at:\
+[Curriculus](https://youtu.be/UQANnl9McAE)
 
 ## Table of Content:
 
@@ -22,9 +22,7 @@ Access my site at:\
 
 ## About Curriculus
 
-[Curriculus] is made for Laurea UAS BIT students. With [Curriculus], BIT students can easily track, save, and view their time spendage on studying. User inputs the amount of time they spent studying, and then chooses the course they spent it on – courses are chosen from a comprehensive list of Laurea UAS Business Information Technologies curriculum courses!
-
-Users can list, sort ...
+- Curriculus was made for Laurea UAS BIT students. With Curriculus, BIT students can easily save and track their time spendage on studying. User inputs the amount of time they spent studying, and then chooses the course they spent it on – courses are chosen from a comprehensive list of Laurea UAS Business Information Technologies curriculum courses!
 
 ## Screenshots
 
@@ -32,7 +30,7 @@ asd
 
 ## Technologies
 
-I'm developing this application with:
+I've developed this application with:
 
 - `HTML`
 - `CSS`
@@ -45,14 +43,12 @@ I'm developing this application with:
 
 ## Status
 
-[Curriculus] is still in progress.
+- Curriculus version 1.0.0 is now completed and published on Netlify.
 
 ## Credits
 
-- [Laurea](laurea.fi) Curriculus is made in co-operation with Laurea UAS.
+- Curriculus was developed in co-operation with Laurea UAS.\[Laurea](laurea.fi)
 
 ## License
 
-Choose a license for your project by following this [guide](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository).
-
-MIT license @ [jonidaniel](jonidaniel.github.io)
+- MIT license @ [jonidaniel](jonidaniel.github.io)
