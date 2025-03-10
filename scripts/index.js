@@ -1,33 +1,39 @@
-// Index page functions
+// Index
 
-// Generates application Index page,
-// also handles transitions to Entry/View page
+// Generates application Index view,
+// also handles transitions to Form/Table view
+// User navigates to the Form/Table view by pressing go button
 
-// All parent divs (header, content, footer) on the webpage body are nested under root element,
-// and all children (buttons, input fields, texts, tables, etc.) are nested under the parent divs
-
-// Define the root constant
-const root = document.querySelector("#root");
+// All parent divs (header, content, footer) are nested directly under the webpage body
+// There are two content columns (left and right) under the content div
+// All children (buttons, input fields, texts, tables, etc.)
+// are nested under the parent divs and content columns
 
 // Create the parent divs
 const header = document.createElement("div");
 const content = document.createElement("div");
 const footer = document.createElement("div");
-// Create go button
-const goButton = document.createElement("button");
+// Create the content columns
+const contentLeft = document.createElement("div");
+const contentRight = document.createElement("div");
 
-// Main Entry Point
-main();
+// Create introduction text
+const introText = document.createElement("p");
+// Create the go button
+const goButton = document.createElement("button");
 
 // Application start function
 function main() {
-  // Assign ids to the parent divs
+  // Assign ids to some parent divs and the content columns
   header.id = "header";
-  content.id = "content";
+  contentLeft.id = "content-left";
+  contentRight.id = "content-right";
   footer.id = "footer";
 
-  // Set the header and footer texts
+  // Set the header, introduction and footer texts
   header.innerText = "Curriculus";
+  introText.innerText =
+    "Study Tracker for Laurea BIT Students\nKeep track of your study hours spent on specific courses\nStore your personal study session entries and see past entries";
   footer.innerText = "ⓒ 2025 Joni Mäkinen";
 
   // Set the go button
@@ -37,20 +43,28 @@ function main() {
     handleClick();
   });
 
-  // Insert the go button to the content parent div
+  // Insert the introduction text and go button to the content parent div
+  content.append(introText);
   content.append(goButton);
 
-  // Insert the parent divs to the root
-  root.append(header);
-  root.append(content);
-  root.append(footer);
+  // Insert the content columns to the content parent div
+  content.append(contentLeft);
+  content.append(contentRight);
+
+  // Insert the parent divs to the webpage body
+  document.body.append(header);
+  document.body.append(content);
+  document.body.append(footer);
 }
 
 // Handles the go button clicks
 function handleClick() {
-  // Remove the go button,
+  // Remove the intro text and go button,
   // since the page is about to change
+  introText.remove();
   goButton.remove();
-  // Go make an entry form (page change)
-  entryForm();
+  // Go make two forms (Form/Table view)
+  form();
 }
+
+main();

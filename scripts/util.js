@@ -1,4 +1,8 @@
-// Create English dropdown menu content
+// Utilities
+
+// Contains items for the search containers
+
+// Create English search items
 const coursesEN = [
   "Understanding Business and the Business Environment",
   "Introduction to Marketing",
@@ -54,7 +58,7 @@ const coursesEN = [
   "AWS Cloud Fundamentals",
 ];
 
-// Create Finnish dropdown menu content
+// Create Finnish search items
 let coursesFI = [
   "Liiketoimintaosaaminen",
   "Markkinoinnin perusteet",
