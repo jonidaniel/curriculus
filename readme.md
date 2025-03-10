@@ -24,10 +24,10 @@ Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 
 ## Screenshots
 
-[a](screenshots/ss01.png?raw=true)
-[b](https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss02.png)
-[c](https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss03.png)
-[d](https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss04.png)
+![a](screenshots/ss01.png?raw=true)
+![b](screenshots/ss02.png?raw=true)
+![c](screenshots/ss03.png?raw=true)
+![d](screenshots/ss04.png?raw=true)
 
 ## Technologies
 
