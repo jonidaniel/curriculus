@@ -25,7 +25,7 @@ Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 ## Screenshots
 
 ![](screenshots/ss01.png?raw=true)
-![](screenshots/ss02.png?raw=true)
+![hgf](screenshots/ss02.png?raw=true)
 ![](screenshots/ss03.png?raw=true)
 ![](screenshots/ss04.png?raw=true)
 
