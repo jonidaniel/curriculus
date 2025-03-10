@@ -50,4 +50,4 @@ I've developed this application with:
 
 ## License
 
-- MIT license @ [jonidaniel](https://github.com/jonidaniel/curriculus))
+- MIT license @ [jonidaniel](https://github.com/jonidaniel/curriculus)
