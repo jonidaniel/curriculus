@@ -24,7 +24,7 @@ Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 
 ## Screenshots
 
-asd
+(https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss01.png)\(https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss02.png)\(https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss03.png)\(https://github.com/jonidaniel/curriculus/tree/main/screenshots/ss04.png)
 
 ## Technologies
 
