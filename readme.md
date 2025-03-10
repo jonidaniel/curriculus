@@ -46,8 +46,7 @@ I've developed this application with:
 
 ## Credits
 
-- Curriculus was developed in co-operation with Laurea UAS.
-  [Laurea](laurea.fi)
+- Curriculus was developed in co-operation with [Laurea UAS](laurea.fi).
 
 ## License
 
