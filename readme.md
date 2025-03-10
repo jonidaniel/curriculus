@@ -27,7 +27,6 @@ Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 ![](screenshots/ss01.png?raw=true)
 ![](screenshots/ss02.png?raw=true)
 ![](screenshots/ss03.png?raw=true)
-![](screenshots/ss04.png?raw=true)
 
 ## Technologies
 
@@ -38,6 +37,10 @@ I've developed this application with:
 - `JavaScript`
 
 ## Setup
+
+- Go to https://curriculus.onrender.com/
+
+or
 
 - Clone repo with `git clone https://github.com/jonidaniel/curriculus`
 - Open `curriculus/index.html` in your browser (preferably Google Chrome)
@@ -52,4 +55,4 @@ I've developed this application with:
 
 ## License
 
-- MIT license at [@jonidaniel/curriculus](https://github.com/jonidaniel/curriculus)
+- MIT license
