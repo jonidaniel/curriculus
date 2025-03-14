@@ -38,7 +38,8 @@ I've developed this application with:
 
 ## Setup
 
-- Go to https://curriculus.onrender.com/
+- Go to https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome)
+-       https://curriculus.onrender.com/ (preferably Safari)
 
 or
 
@@ -47,7 +48,7 @@ or
 
 ## Status
 
-- Curriculus version 1.0.0 is now published and operational on Render
+- Curriculus version 1.0.1 is now published and operational on Netlify and Render
 
 ## Credits
 
