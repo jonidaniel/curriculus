@@ -272,6 +272,7 @@ function saveEntry(entry) {
 
   // Get previous entries
   let records = localStorage.getItem("curriculus");
+  console.log(records);
   // If there are no previous entries
   if (records == null) {
     let json = JSON.stringify([entry]);
