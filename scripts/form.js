@@ -188,16 +188,19 @@ function handleSubmit(hours, course, notes) {
   const hoursValidated = validateHours(noCommas);
   const coursesValidated = validateCourses(course);
   if (hoursValidated && coursesValidated) {
-    // Date and time of submit are saved
-    // const datetime = dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss");
+    // Date and time of submit are saved into datetime
     const date = new Date();
     const year = date.getFullYear();
+    // + 1 is because of special indexing of date.getMonth()
+    // If omitted, January is 0 and December is 11
     let month = date.getMonth() + 1;
     let day = date.getDate();
     let hour = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
 
+    // Add zeros before 1-digit values
+    // This way sorting works
     if (month < 10) month = "0" + month;
     if (day < 10) day = "0" + day;
     if (hour < 10) hour = "0" + hour;
