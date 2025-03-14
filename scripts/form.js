@@ -189,7 +189,8 @@ function handleSubmit(hours, course, notes) {
   const coursesValidated = validateCourses(course);
   if (hoursValidated && coursesValidated) {
     // Date and time of submit are saved
-    const datetime = dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss");
+    // const datetime = dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss");
+    const datetime = 1;
 
     function idGenerator() {
       let id = "";
