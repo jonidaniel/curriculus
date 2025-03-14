@@ -38,8 +38,7 @@ I've developed this application with:
 
 ## Setup
 
-- Go to https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome)
--       https://curriculus.onrender.com/ (preferably Safari)
+- Go to https://fascinating-bunny-10c96f.netlify.app/ (preferably Safari or Chrome) or https://curriculus.onrender.com/ (preferably Safari)
 
 or
 
