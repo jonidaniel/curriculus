@@ -25,6 +25,14 @@ function table(arg) {
 
   // Sort array
   function compareFn(a, b) {
+    a.datetime.replace("-", "");
+    a.datetime.replace(",", "");
+    a.datetime.replace(" ", "");
+    a.datetime.replace(":", "");
+    b.datetime.replace("-", "");
+    b.datetime.replace(",", "");
+    b.datetime.replace(" ", "");
+    b.datetime.replace(":", "");
     if (a.datetime > b.datetime) {
       return -1;
     } else if (a.datetime < b.datetime) {

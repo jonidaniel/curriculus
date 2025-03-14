@@ -190,7 +190,21 @@ function handleSubmit(hours, course, notes) {
   if (hoursValidated && coursesValidated) {
     // Date and time of submit are saved
     // const datetime = dateFns.format(new Date(), "YYYY-MM-DD,  HH:mm:ss");
-    const datetime = 1;
+    const date = new Date();
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+    if (hour < 10) hour = "0" + hour;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (seconds < 10) seconds = "0" + seconds;
+
+    const datetime = `${year}-${month}-${day},  ${hour}:${minutes}:${seconds}`;
 
     function idGenerator() {
       let id = "";
@@ -273,7 +287,6 @@ function saveEntry(entry) {
 
   // Get previous entries
   let records = localStorage.getItem("curriculus");
-  console.log(records);
   // If there are no previous entries
   if (records == null) {
     let json = JSON.stringify([entry]);
