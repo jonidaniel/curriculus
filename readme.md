@@ -22,6 +22,8 @@ Access the video demonstration on [Youtube](https://youtu.be/UQANnl9McAE)
 
 - Curriculus was made for Laurea UAS BIT students. With Curriculus, BIT students can easily save and track their time spendage on studying. User inputs the amount of time they spent studying, and then chooses the course they spent it on – courses are chosen from a comprehensive list of Laurea UAS Business Information Technologies curriculum courses!
 
+- A DOM Scripting project for the Laurea UAS course Web-sovellusten kehittäminen Javascriptillä TO00BL10-3025
+
 ## Screenshots
 
 ![](screenshots/ss01.png?raw=true)
